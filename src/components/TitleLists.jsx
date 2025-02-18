@@ -11,19 +11,27 @@ export default function TitleLists() {
 
     const addTask = e => {
         e.preventDefault();
-        const updateTasks = [...tasks, newTask];
+        const updatedTasks = [...tasks, newTask];
         setTasks(updatedTasks);
     }
 
 
     return (
-        <div>
-            <h2>Lista Titoli</h2>
-            <ul>
-                {tasks.map((task, i) => (
-                    <li key={i}>{task}</li>
-                ))}
-            </ul>
-        </div>
+        <>
+            <form onSubmit={addTask}>
+                <input type="text" value={newTask}
+                    onChange={event => { setNewTask(event.target.value) }}
+                />
+                <button>Invia</button>
+            </form >
+            <div>
+                <h2>Lista Titoli</h2>
+                <ul>
+                    {tasks.map((task, i) => (
+                        <li key={i}>{task}</li>
+                    ))}
+                </ul>
+            </div>
+        </>
     );
 }
